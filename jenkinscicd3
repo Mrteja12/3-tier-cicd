@@ -29,13 +29,13 @@ sh 'docker pull charyy/cassandradb:taga'
 }
 stage("Docker tag") {
 steps {
-sh 'docker tag charyy/cassandradb:taga gcr.io/model-argon-389809/cassandradb:taga'
+sh 'docker tag charyy/cassandradb:taga gcr.io/tarak-408506/cassandradb:taga'
 }
 }
 stage("Docker push") {
 steps {
 sh 'gcloud auth configure-docker'
-sh 'docker push gcr.io/model-argon-389809/cassandra:taga'
+sh 'docker push gcr.io/	tarak-408506/cassandra:taga'
 }
 }
 stage("cluster create") {
@@ -45,7 +45,7 @@ sh 'gcloud container clusters create cassandradb-cluster --num-nodes 3 --locatio
 }
 stage("Create & expose deploy") {
 steps {
-sh 'kubectl create deployment cassandradb --image=gcr.io/model-argon-389809/tomcat:taga'
+sh 'kubectl create deployment cassandradb --image=gcr.io/tarak-408506/cassandradb:taga'
 sh 'kubectl expose deployment cassandradb --type=LoadBalancer --port 80 --target-port 27017'
 }
 }
