@@ -35,7 +35,7 @@ sh 'docker tag charyy/cassandradb:taga gcr.io/tarak-408506/cassandradb:taga'
 stage("Docker push") {
 steps {
 sh 'gcloud auth configure-docker'
-sh 'docker push gcr.io/	tarak-408506/cassandra:taga'
+sh 'docker push gcr.io/tarak-408506/cassandra:taga'
 }
 }
 stage("cluster create") {
